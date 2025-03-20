@@ -6,35 +6,35 @@ Svi exchange order-i unutar aplikacije odnose se na istu akciju radi jednostavno
 
 Ukoliko postoje neki problemi sa frontend-om ili u njegovom povezivanju sa backend-om, ispod su navedeni API pozivi:
 
-Login:
-	POST
-	http://localhost:9090/users/login
-	Body:
+Login:\
+	POST\
+	http://localhost:9090/users/login \
+	Body:\
 		{
     			"email":"john.doe@gmail.com",
     			"password":"sifra"
 		}
 
 
-Kreiranje order-a:
-	POST
-	http://localhost:9090/stockorders/create
-	 + Authorization header sa jwt
-	Body:
+Kreiranje order-a:\
+	POST\
+	http://localhost:9090/stockorders/create \
+	 + Authorization header sa jwt \
+	Body: \
 		{
     			"amount":6,
     			"price":600,
     			"stockOrderMatchingType":0,
     			"stockOrderType":1
-		}
-	stockOrderMatchingType -> Market = 0 , Limit = 1
-	stockOrderType -> Buy = 0 , Sell = 1
+		} \
+	stockOrderMatchingType -> Market = 0 , Limit = 1 \
+	stockOrderType -> Buy = 0 , Sell = 1 \
 
-Dobavljanje top 10 ordera:
-	GET
-	http://localhost:9090/stockorders/gettopbuying
-	 + Authorization header sa jwt
-	GET
-	http://localhost:9090/stockorders/gettopselling
- 	 + Authorization header sa jwt
+Dobavljanje top 10 ordera: \
+	GET \
+	http://localhost:9090/stockorders/gettopbuying \
+	 + Authorization header sa jwt \
+	GET \
+	http://localhost:9090/stockorders/gettopselling \
+ 	 + Authorization header sa jwt 
 	
