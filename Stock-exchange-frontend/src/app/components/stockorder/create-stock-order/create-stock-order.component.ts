@@ -20,7 +20,7 @@ export class CreateStockOrderComponent {
   constructor(private fb: FormBuilder, private stockOrderService : StockOrderService, private router: Router, private swal : AlertService) {
     this.createOrderForm = this.fb.group({
       amount: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [0, Validators.required],
       matchType: [null, Validators.required],
       orderType: [null, Validators.required]
     });

@@ -10,13 +10,28 @@ import { WebsocketService } from './core/services/websocket.service';
 })
 export class AppComponent {
 
-  constructor(private webSocketService: WebsocketService) {}
+  constructor(private webSocketService: WebsocketService, private router : Router) {}
+
+  showNavbar = true;
+  private readonly destroy$ = new Subject<void>();
 
   ngOnInit() {
     const authToken = localStorage.getItem('access_token');
     if (authToken) {
       this.webSocketService.connect(authToken);
     }
+  
+    this.router.events.pipe(takeUntil(this.destroy$),tap((event) =>{
+      if (event instanceof NavigationEnd) {
+        // List of routes that should not show the navbar
+        const excludedRoutes = ['/', '/register'];
+        const currentRoute = event.urlAfterRedirects;
+
+        // Check if the route matches any of the excluded routes
+        this.showNavbar =
+          !excludedRoutes.includes(currentRoute)
+      }
+    })).subscribe();
   }
   
 }
