@@ -1,17 +1,18 @@
 package teletrader.stockexchange.dto;
 
-import jakarta.persistence.Column;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 import teletrader.stockexchange.model.Enums;
 
-import java.time.LocalDateTime;
 
 public class NewStockOrderDto {
     @Getter @Setter
+    @Min(value = 0)
     private float price;
 
     @Getter @Setter
+    @Min(value = 0)
     private int amount;
 
     @Getter @Setter

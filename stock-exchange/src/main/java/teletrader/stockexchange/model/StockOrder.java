@@ -3,6 +3,7 @@ package teletrader.stockexchange.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.validation.constraints.Min;
 
 import java.time.LocalDateTime;
 
@@ -20,10 +21,12 @@ public class StockOrder {
     private String userEmail;
 
     @Column(name = "price")
+    @Min(value = 0)
     @Getter @Setter
     private double price;
 
     @Column(name = "amount")
+    @Min(value = 0)
     @Getter @Setter
     private int amount;
 

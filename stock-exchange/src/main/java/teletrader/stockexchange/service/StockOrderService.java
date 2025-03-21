@@ -62,7 +62,7 @@ public class StockOrderService {
         if(newStockOrder.getStockOrderMatchingType() == Enums.StockOrderMatchingType.MARKET){
             buyLimit = Integer.MAX_VALUE;
         }
-        return stockOrderRepository.findFittingSellingStockOrders(buyLimit);
+        return stockOrderRepository.findFittingSellingStockOrders(buyLimit, newStockOrder.getUserEmail());
     }
 
     //Finds suitable buy orders to match with newly created sell order
@@ -71,7 +71,7 @@ public class StockOrderService {
         if(newStockOrder.getStockOrderMatchingType() == Enums.StockOrderMatchingType.MARKET){
             buyLimit = 0;
         }
-        return stockOrderRepository.findFittingBuyingStockOrders(buyLimit);
+        return stockOrderRepository.findFittingBuyingStockOrders(buyLimit, newStockOrder.getUserEmail());
     }
 
     //Finishes message for user and cancels orders that were MARKET type
